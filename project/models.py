@@ -33,3 +33,27 @@ def datetime_modify(id):
 
     data = [{'before': before, 'after': after}]
     return None, data
+
+
+def get_specific_reviews(boardId):
+    # 특정 게시글의 리뷰 조회
+    rows = db.get_db().execute('SELECT * FROM reviews')
+    data = []
+    for row in rows:
+        data.append({"id": row[0], "board_id": row[1], "user_id": row[2], "point": row[3]})
+    print(data)
+
+    if not data:
+        return f'게시글 {boardId}의 리뷰가 없습니다.', None
+    return None, data 
+
+
+def insert_review(boardId, userId, point):
+    # 새 리뷰 삽입
+    before = db.get_db().execute('SELECT count(*) FROM reviews').fetchone()[0]
+    db.get_db().execute('INSERT INTO reviews(id, board_id, user_id, point) VALUES (null, ?, ?, ?)', (boardId, userId, point))
+    after = db.get_db().execute('SELECT count(*) FROM reviews').fetchone()[0]
+
+    if after == before:
+        return f'리뷰 등록을 실패했습니다.', None
+    return None, [{'new_review_id': after}]

@@ -1,6 +1,6 @@
 import json
 from flask import jsonify, Blueprint, request 
-from .models import get_posts, datetime_modify
+from .models import get_posts, datetime_modify, get_specific_reviews, insert_review
 bp = Blueprint("board", __name__)
 
 def get_response(error, data):
@@ -35,5 +35,25 @@ def posts_modify():
 
     resp = get_response(error, data)    
     return jsonify(resp)
-
 # curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' "http://localhost:5000/board/modify" -d '{ "boardId": 1 }'
+
+
+@bp.route("/board/<boardId>/reviews")
+def reviews_specific_board(boardId): 
+    req = request.args 
+
+    error, data = get_specific_reviews(int(boardId))
+
+    resp = get_response(error, data)    
+    return jsonify(resp)
+
+
+@bp.route("/board/<boardId>/review/add", methods = ['POST'])
+def reviews_add(boardId): 
+    req = request.get_json()
+
+    error, data = insert_review(boardId, req["userId"], req["point"])
+
+    resp = get_response(error, data)    
+    return jsonify(resp)
+# curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' "http://localhost:5000/board/1/review/add" -d '{ "userId": "test1", "point": 2 }'
