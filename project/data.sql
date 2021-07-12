@@ -8,7 +8,7 @@ INSERT INTO board(id, title, writer, category, post_time)
 VALUES (null, '게시글2', 'test1', 'PET', '2021-07-10 20:35:08');
 
 INSERT INTO reviews(id, board_id, user_id, point)
-VALUES (null, 1, 'test1', 3)
+VALUES (null, 1, 'test1', 3);
 
 INSERT INTO reviews(id, board_id, user_id, point)
-VALUES (null, 1, 'test1', 4)
+VALUES (null, 1, 'test1', 4);

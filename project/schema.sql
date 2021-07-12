@@ -20,9 +20,9 @@ CREATE TABLE board (id integer PRIMARY key autoincrement, --게시판 PK
 
 CREATE TABLE reviews(id integer PRIMARY key autoincrement, --리뷰 PK
  board_id integer NOT NULL, --게시글 아이디 
- user_id varchar(20) NOT NULL UNIQUE, --리뷰어 아이디
- point int NOT NULL DEFAULT 0, --평점
- FOREIGN KEY(board_id) REFERENCES board(id)
+ user_id varchar(20) NOT NULL, --리뷰어 아이디, not UNIQUE
+ point int check (point in (1, 2, 3, 4, 5)) NOT NULL, --평점
+ FOREIGN KEY(board_id) REFERENCES board(id),
  FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
