@@ -1,4 +1,4 @@
-## :bulb: Summary
+## :bulb: Introduction
 - 게시물 추가, 수정, 삭제와 리뷰 관리 API 구현
 <br><br>
 ## :bulb: Tasks in progress
