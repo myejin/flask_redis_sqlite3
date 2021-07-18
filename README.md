@@ -1,18 +1,25 @@
-## :bulb: Introduction
-- 게시물 추가, 수정, 삭제와 리뷰 관리 API 구현
+## :bulb: Summary
+- API 구현 : 게시물 및 리뷰 열람 (GET), 게시물 수정 (POST), 새 리뷰 작성 (POST)
+- 구조 
+  - 리뷰 작성
+    - <b>`POST request` :arrow_right: `Redis lpush` :arrow_right: `rpop` :arrow_right: `Sqlite3 Insert`</b>
+  - 그 외
+    - <b>`POST/GET request` :arrow_right: `Sqlite3 Select / Update`</b>
 <br><br>
 ## :bulb: Tasks in progress
-- Redis 연동
+- 총 리뷰 수 캐시로 저장하기
 - GET/POST 파라미터 구조 일치시키기
 - 테스트 코드 구현
 <br><br>
 ## :bulb: How to run 
+```bash
+$ /bin/bash start.sh
+```
+<br>
 
-<br><br>
-
-## :bulb: Modules used
+## :bulb: Python Modules used
   - flask
-  - 
+  - redis
 <br><br> 
 ## :bulb: Unit test
 <br><br> 
@@ -115,15 +122,5 @@
   "error": null
 }
 ```
-#### 5. 게시물에 대한 리뷰 
+#### 5. 새 리뷰 추가 
   - `curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' "http://localhost:5000/board/1/review/add" -d '{ "userId": "test1", "point": 2 }'`
-```
-{
-  "data": [
-    {
-      "new_review_id": 3
-    }
-  ], 
-  "error": null
-}
-```
