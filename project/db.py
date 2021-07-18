@@ -10,6 +10,7 @@ def get_db():
             current_app.config["DATABASE"],
             detect_types=sqlite3.PARSE_DECLTYPES,
             check_same_thread=False,
+            isolation_level=None
         )
         g.db.row_factory = sqlite3.Row
 
