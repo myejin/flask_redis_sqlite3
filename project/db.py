@@ -9,8 +9,7 @@ def get_db():
         g.db = sqlite3.connect(
             current_app.config["DATABASE"],
             detect_types=sqlite3.PARSE_DECLTYPES,
-            check_same_thread=False,
-            isolation_level=None
+            check_same_thread=False
         )
         g.db.row_factory = sqlite3.Row
 
