@@ -124,3 +124,9 @@ $ /bin/bash start.sh
 ```
 #### 5. 새 리뷰 추가 
   - `curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' "http://localhost:5000/board/1/review/add" -d '{ "userId": "test1", "point": 2 }'`
+```
+{
+  "data": "리뷰 입력 중입니다.", 
+  "error": null
+}
+```
