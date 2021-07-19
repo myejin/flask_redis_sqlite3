@@ -136,7 +136,7 @@ $ /bin/bash start.sh
   "error": null
 }
 ```
-##### - 실제 삽입, 멀티 프로세스 구동
+##### - 실제 삽입, 멀티 프로세스 구동 (print)
 ```
 {'error': None, 'data': 'PID [9508] 리뷰 등록 완료'}
 {'error': None, 'data': 'PID [9510] 리뷰 등록 완료'}
