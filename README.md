@@ -83,8 +83,8 @@ $ /bin/bash start.sh
   - `http://127.0.0.1:5000/board?category=INFO`
 ```
 {
-  "data": null, 
-  "error": "카테고리 INFO의 게시물이 없습니다."
+  "data": "카테고리 INFO의 게시물이 없습니다.",
+  "error": null
 }
 ```
 #### 3. 특정 게시물의 모든 리뷰 조회
