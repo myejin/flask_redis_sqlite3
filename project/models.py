@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-import json
+import sqlite3
 from . import db
 
 def get_posts(cat):
@@ -25,7 +25,7 @@ def get_posts(cat):
             data = f'카테고리 {cat}의 게시물이 없습니다.'
         return None, data 
     except sqlite3.DatabaseError as e:
-        return e, None 
+        return str(e), None 
 
 
 def datetime_modify(id):
@@ -39,7 +39,7 @@ def datetime_modify(id):
         data = [{ 'last_modify_at' : row }]
         return None, data
     except sqlite3.DatabaseError as e:
-        return e, None 
+        return str(e), None 
 
 
 def get_specific_reviews(boardId):
@@ -56,5 +56,5 @@ def get_specific_reviews(boardId):
             data = f'게시글 {boardId}의 리뷰가 없습니다.'
         return None, data 
     except sqlite3.DatabaseError as e:
-        return e, None 
+        return str(e), None 
     
