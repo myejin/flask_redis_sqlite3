@@ -1,7 +1,14 @@
+import redis 
 import sqlite3
-import click
 from flask import current_app, g
-from flask.cli import with_appcontext
+
+
+def get_redis():
+    if "redis" not in g:
+        g.redis = redis.from_url(
+            current_app.config['REDIS_URL']
+        )
+    return g.redis    
 
 
 def get_db():
@@ -38,14 +45,8 @@ def load_fixture():
     current_app.logger.info("Fixture load done.")
 
 
-@click.command("init-db")
-@with_appcontext
-def init_db_command():
-    init_db()
-    load_fixture()
-    click.echo("Initialized the database.")
-
-
 def init_app(app):
     app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
+    with app.app_context():
+        init_db()
+        load_fixture()
