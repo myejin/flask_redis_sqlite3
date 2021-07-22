@@ -1,7 +1,7 @@
 import json
 from flask import jsonify, Blueprint, request 
 from .models import get_posts, datetime_modify, get_specific_reviews
-from . import rq 
+from . import db
 bp = Blueprint("board", __name__)
 
 def get_response(error, data):
@@ -52,7 +52,7 @@ def reviews_specific_board(boardId):
 def reviews_add(boardId): 
     req = request.get_json()
     req['boardId'] = boardId 
-    rq.lpush('review', json.dumps(req))
+    db.get_redis().lpush('review', json.dumps(req))
     resp = get_response(None, req)    
     return jsonify(resp)
 # curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' "http://localhost:5000/board/1/review/add" -d '{ "userId": "test1", "point": 2 }'
