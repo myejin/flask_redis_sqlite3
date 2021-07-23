@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-import sqlite3
 from . import db
 
 def get_posts(cat):
@@ -36,7 +35,7 @@ def datetime_modify(id):
 
 def get_specific_reviews(boardId):
     """특정 게시글의 리뷰 조회"""
-    
+
     rows = db.get_db().execute('SELECT * FROM reviews WHERE board_id = ?', (boardId,))
     data = []
     for row in rows:
