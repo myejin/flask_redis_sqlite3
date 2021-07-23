@@ -1,5 +1,4 @@
 from flask import Flask
-from sqlite3 import DatabaseError
 
 def create_app(config_file=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -15,6 +14,6 @@ def create_app(config_file=None):
 
 
 def handle_error(app):
-    @app.errorhandler(DatabaseError)
+    @app.errorhandler(Exception)
     def db_error_handler(e):
         return {"error": str(e), "data": None}
