@@ -15,5 +15,5 @@ def create_app(config_file=None):
 
 def handle_error(app):
     @app.errorhandler(Exception)
-    def db_error_handler(e):
+    def err_handler(e):
         return {"error": str(e), "data": None}
