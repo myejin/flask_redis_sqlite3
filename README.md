@@ -1,7 +1,7 @@
 ## :bulb: Introduction
 - API 구현 : 게시물 및 리뷰 열람 (GET), 게시물 수정 (POST), 새 리뷰 작성 (POST)
 - 구조 
-  - Sqlite3 격리수준 DEFERRED, 트랜잭션 Commit 전까지 Locking 상태
+  - Sqlite3 격리수준 : DEFERRED (트랜잭션 커밋 전까지 Locking 상태)
   - 리뷰 작성
     - <b>`POST request` :arrow_right: `Redis lpush` :arrow_right: `rpop` :arrow_right: `Sqlite3 Insert`</b>
     - 비동기 작업의 중복 및 누락 방지
@@ -9,7 +9,6 @@
     - <b>`POST/GET request` :arrow_right: `Sqlite3 Select / Update`</b>
 <br><br>
 ## :bulb: Tasks in progress
-- sqlite3 timeout(언락 대기시간) 수정
 - GET/POST 파라미터 구조 일치시키기
 - 테스트 코드 구현
 <br><br>
