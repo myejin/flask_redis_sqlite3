@@ -9,7 +9,6 @@
     - <b>`POST/GET request` :arrow_right: `Sqlite3 Select / Update`</b>
 <br><br>
 ## :bulb: Tasks in progress
-- GET/POST 파라미터 구조 일치시키기
 - 테스트 코드 구현
 <br><br>
 ## :bulb: How to run 
