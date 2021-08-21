@@ -10,6 +10,7 @@
 <br><br>
 ## :bulb: Tasks in progress
 - 테스트 코드 구현
+- 리뷰등록 결과 캐시 추가
 <br><br>
 ## :bulb: How to run 
 ```bash
