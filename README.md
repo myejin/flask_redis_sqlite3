@@ -1,7 +1,6 @@
 ## :bulb: Introduction
 - API 구현 : 게시물 및 리뷰 열람 (GET), 게시물 수정 (POST), 새 리뷰 작성 (POST)
 - 구조 
-  - Sqlite3 격리수준 : DEFERRED (트랜잭션 커밋 전까지 Locking 상태)
   - 리뷰 작성
     - <b>`POST request` :arrow_right: `Redis lpush` :arrow_right: `rpop` :arrow_right: `Sqlite3 Insert`</b>
     - 비동기 작업의 중복 및 누락 방지
